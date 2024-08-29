@@ -1,15 +1,18 @@
 <template>
   <MetamaskConnect />
+  <HashGenerator />
 </template>
 
 <script>
 
 import MetamaskConnect from "@/components/MetamaskConnect.vue";
+import HashGenerator from "@/components/HashGenerator.vue";
 
 export default {
   name: 'App',
   components: {
-    MetamaskConnect
+    MetamaskConnect,
+    HashGenerator
   }
 }
 </script>
