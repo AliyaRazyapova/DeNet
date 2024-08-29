@@ -5,6 +5,7 @@
   <EncryptText />
   <DecryptText />
   <BalanceDisplay />
+  <SendTransaction />
 </template>
 
 <script>
@@ -15,6 +16,7 @@ import DocPanel from "@/components/DocPanel.vue";
 import EncryptText from "@/components/EncryptText.vue";
 import DecryptText from "@/components/DecryptText.vue";
 import BalanceDisplay from "@/components/BalanceDisplay.vue";
+import SendTransaction from "@/components/SendTransaction.vue";
 
 export default {
   name: 'App',
@@ -24,7 +26,8 @@ export default {
     DocPanel,
     EncryptText,
     DecryptText,
-    BalanceDisplay
+    BalanceDisplay,
+    SendTransaction,
   }
 }
 </script>
