@@ -4,6 +4,7 @@
   <DocPanel  />
   <EncryptText />
   <DecryptText />
+  <BalanceDisplay />
 </template>
 
 <script>
@@ -13,6 +14,7 @@ import HashGenerator from "@/components/HashGenerator.vue";
 import DocPanel from "@/components/DocPanel.vue";
 import EncryptText from "@/components/EncryptText.vue";
 import DecryptText from "@/components/DecryptText.vue";
+import BalanceDisplay from "@/components/BalanceDisplay.vue";
 
 export default {
   name: 'App',
@@ -22,6 +24,7 @@ export default {
     DocPanel,
     EncryptText,
     DecryptText,
+    BalanceDisplay
   }
 }
 </script>
