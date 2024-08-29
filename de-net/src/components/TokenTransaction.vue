@@ -1,22 +1,27 @@
 <template>
-  <div>
-    <input v-model="recipient" placeholder="Адрес получателя" />
-    <input v-model="amount" placeholder="Сумма токенов" />
-    <button @click="sendToken">Отправить токены</button>
+  <div class="container my-4">
+    <div class="form-group">
+      <label for="recipient">Адрес получателя:</label>
+      <input id="recipient" v-model="recipient" class="form-control" placeholder="Адрес получателя" />
+    </div>
+    <div class="form-group">
+      <label for="amount">Сумма токенов:</label>
+      <input id="amount" v-model="amount" class="form-control" placeholder="Сумма токенов" />
+    </div>
+    <button @click="sendToken" class="btn btn-warning mt-3">Отправить токены</button>
   </div>
 </template>
 
 <script>
-import Web3 from "web3";
+import Web3 from 'web3';
 
 export default {
   data() {
     return {
       recipient: '',
       amount: '',
-      tokenAddress: '0xYourTokenContractAddress', // Адрес вашего контракта токена
+      tokenAddress: '0xYourTokenContractAddress',
       tokenABI: [
-        // Сокращенный ABI для функции transfer
         {
           constant: false,
           inputs: [
@@ -37,8 +42,9 @@ export default {
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           const account = accounts[0];
 
-          const contract = new window.web3.eth.Contract(this.tokenABI, this.tokenAddress);
-          const amountInWei = window.web3.utils.toWei(this.amount, 'ether'); // Конвертация токенов в Wei
+          const web3 = new Web3(window.ethereum);
+          const contract = new web3.eth.Contract(this.tokenABI, this.tokenAddress);
+          const amountInWei = web3.utils.toWei(this.amount, 'ether');
 
           await contract.methods.transfer(this.recipient, amountInWei).send({ from: account });
         } catch (error) {
@@ -48,13 +54,6 @@ export default {
         alert('Установите Metamask!');
       }
     },
-  },
-  mounted() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-    } else {
-      alert('Установите Metamask!');
-    }
   },
 };
 </script>

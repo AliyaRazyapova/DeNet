@@ -1,30 +1,25 @@
 <template>
-  <div>
-    <button @click="connectWallet">Подключить Metamask</button>
-    <p v-if="account">Ваш адрес: {{ account }}</p>
+  <div class="container my-4">
+    <button @click="connectMetamask" class="btn btn-primary">Подключить Metamask</button>
+    <p v-if="account" class="mt-3">Адрес вашего кошелька: {{ account }}</p>
   </div>
 </template>
 
 <script>
-import Web3 from 'web3';
-
 export default {
   data() {
     return {
-      web3: null,
       account: null,
     };
   },
   methods: {
-    async connectWallet() {
+    async connectMetamask() {
       if (window.ethereum) {
         try {
-          this.web3 = new Web3(window.ethereum);
-          await window.ethereum.request({ method: 'eth_requestAccounts' });
-          const accounts = await this.web3.eth.getAccounts();
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           this.account = accounts[0];
         } catch (error) {
-          console.error('Ошибка подключения:', error);
+          console.error('Ошибка подключения Metamask:', error);
         }
       } else {
         alert('Установите Metamask!');

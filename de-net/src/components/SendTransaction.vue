@@ -1,8 +1,14 @@
 <template>
-  <div>
-    <input v-model="recipient" placeholder="Адрес получателя" />
-    <input v-model="amount" placeholder="Сумма в ETH" />
-    <button @click="sendTransaction">Отправить транзакцию</button>
+  <div class="container my-4">
+    <div class="form-group">
+      <label for="recipient">Адрес получателя:</label>
+      <input id="recipient" v-model="recipient" class="form-control" placeholder="Адрес получателя" />
+    </div>
+    <div class="form-group">
+      <label for="amount">Сумма в ETH:</label>
+      <input id="amount" v-model="amount" class="form-control" placeholder="Сумма в ETH" />
+    </div>
+    <button @click="sendTransaction" class="btn btn-success mt-3">Отправить транзакцию</button>
   </div>
 </template>
 
@@ -23,7 +29,7 @@ export default {
           const transactionParameters = {
             to: this.recipient,
             from: account,
-            value: '0x' + (this.amount * 1e18).toString(16), // Конвертация ETH в Wei
+            value: '0x' + (this.amount * 1e18).toString(16),
           };
           await window.ethereum.request({
             method: 'eth_sendTransaction',

@@ -1,9 +1,16 @@
 <template>
-  <div>
-    <div v-for="app in apps" :key="app.name">
-      <button @click="openApp(app.url)">{{ app.name }}</button>
+  <div class="container my-4">
+    <h4>Док панель</h4>
+    <div class="list-group mb-3">
+      <button
+        v-for="app in apps"
+        :key="app.name"
+        @click="openApp(app.url)"
+        class="list-group-item list-group-item-action">
+        {{ app.name }}
+      </button>
     </div>
-    <iframe v-if="currentApp" :src="currentApp" width="100%" height="500px"></iframe>
+    <iframe v-if="currentApp" :src="currentApp" class="w-100" style="height: 500px; border: none;"></iframe>
   </div>
 </template>
 
@@ -24,3 +31,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.container {
+  max-width: 800px;
+}
+</style>

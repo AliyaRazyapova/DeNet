@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <button @click="getBalance">Показать баланс</button>
-    <p v-if="balance">Ваш баланс: {{ balance }} ETH</p>
+  <div class="container my-4">
+    <button @click="getBalance" class="btn btn-primary">Показать баланс</button>
+    <p v-if="balance" class="mt-3">Ваш баланс: {{ balance }} ETH</p>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
             method: 'eth_getBalance',
             params: [account, 'latest'],
           });
-          this.balance = parseFloat(parseInt(balance, 16) / 1e18).toFixed(4); // Конвертация из Wei в ETH
+          this.balance = parseFloat(parseInt(balance, 16) / 1e18).toFixed(4);
         } catch (error) {
           console.error('Ошибка получения баланса:', error);
         }
