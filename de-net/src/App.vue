@@ -6,6 +6,7 @@
   <DecryptText />
   <BalanceDisplay />
   <SendTransaction />
+  <TokenTransaction />
 </template>
 
 <script>
@@ -17,6 +18,7 @@ import EncryptText from "@/components/EncryptText.vue";
 import DecryptText from "@/components/DecryptText.vue";
 import BalanceDisplay from "@/components/BalanceDisplay.vue";
 import SendTransaction from "@/components/SendTransaction.vue";
+import TokenTransaction from "@/components/TokenTransaction.vue";
 
 export default {
   name: 'App',
@@ -28,6 +30,7 @@ export default {
     DecryptText,
     BalanceDisplay,
     SendTransaction,
+    TokenTransaction
   }
 }
 </script>
